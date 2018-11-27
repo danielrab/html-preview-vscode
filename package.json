@@ -3,20 +3,20 @@
 	"displayName": "%displayName%",
 	"description": "%description%",
 	"version": "0.2.4",
-	"publisher": "tht13",
-	"author": "Thomas Haakon Townsend",
+	"publisher": "george-alisson",
+	"author": "George Oliveira, Thomas Haakon Townsend",
 	"license": "MIT",
 	"readme": "README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/tht13/html-preview-vscode"
+		"url": "https://github.com/george-alisson/html-preview-vscode"
 	},
 	"galleryBanner": {
 		"color": "#78d6f0",
 		"theme": "light"
 	},
-	"bugs": "https://github.com/tht13/html-preview-vscode/issues",
-	"homepage": "https://github.com/tht13/html-preview-vscode/blob/master/README.md",
+	"bugs": "https://github.com/george-alisson/html-preview-vscode/issues",
+	"homepage": "https://github.com/george-alisson/html-preview-vscode/blob/master/README.md",
 	"icon": "icon.png",
 	"main": "./out/extension.js",
 	"engines": {
@@ -34,7 +34,9 @@
 		"onCommand:html.showLockedPreviewToSide",
 		"onCommand:html.showSource",
 		"onCommand:html.showPreviewSecuritySelector",
-		"onWebviewPanel:html.preview"
+		"onWebviewPanel:html.preview",
+		"onCommand:html.openBaseStyle",
+		"onCommand:html.showInBrowser"
 	],
 	"contributes": {
 		"commands": [
@@ -88,6 +90,16 @@
 				"command": "html.preview.toggleLock",
 				"title": "%html.preview.toggleLock.title%",
 				"category": "HTML"
+			},
+			{
+				"command": "html.openBaseStyle",
+				"title": "%html.openBaseStyle.title%",
+				"category": "HTML"
+			},
+			{
+				"command": "html.showInBrowser",
+				"title": "%html.showInBrowser.title%",
+				"category": "HTML"
 			}
 		],
 		"menus": {
@@ -117,6 +129,11 @@
 					"command": "html.showPreviewSecuritySelector",
 					"when": "htmlPreviewFocus",
 					"group": "1_html"
+				},
+				{
+					"command": "html.showInBrowser",
+					"when": "htmlPreviewFocus",
+					"group": "1_html"
 				}
 			],
 			"explorer/context": [
@@ -124,11 +141,28 @@
 					"command": "html.showPreview",
 					"when": "resourceLangId == html",
 					"group": "navigation"
+				},
+				{
+					"command": "html.showInBrowser",
+					"when": "resourceLangId == html",
+					"group": "navigation"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "html.showInBrowser",
+					"when": "resourceLangId == html",
+					"group": "navigation"
 				}
 			],
 			"editor/title/context": [
 				{
 					"command": "html.showPreview",
+					"when": "resourceLangId == html",
+					"group": "navigation"
+				},
+				{
+					"command": "html.showInBrowser",
 					"when": "resourceLangId == html",
 					"group": "navigation"
 				}
@@ -165,6 +199,11 @@
 				{
 					"command": "html.preview.toggleLock",
 					"when": "htmlPreviewFocus"
+				},
+				{
+					"command": "html.showInBrowser",
+					"when": "resourceLangId == html",
+					"group": "navigation"
 				}
 			]
 		},
@@ -179,6 +218,12 @@
 				"command": "html.showPreviewToSide",
 				"key": "ctrl+k v",
 				"mac": "cmd+k v",
+				"when": "editorLangId == html"
+			},
+			{
+				"command": "html.showInBrowser",
+				"key": "ctrl+k w",
+				"mac": "cmd+k w",
 				"when": "editorLangId == html"
 			}
 		],
@@ -239,10 +284,12 @@
 	"dependencies": {
 		"cheerio": "1.0.0-rc.2",
 		"lodash.throttle": "4.1.1",
+		"opn": "^5.4.0",
 		"vscode-nls": "3.2.4"
 	},
 	"devDependencies": {
 		"@studio/changes": "1.7.0",
+		"@types/opn": "^5.1.0",
 		"@types/cheerio": "0.22.9",
 		"@types/lodash.throttle": "4.1.4",
 		"@types/mocha": "2.2.42",
