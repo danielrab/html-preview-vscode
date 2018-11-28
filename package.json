@@ -204,6 +204,16 @@
 					"command": "html.showInBrowser",
 					"when": "resourceLangId == html",
 					"group": "navigation"
+				},
+				{
+					"command": "html.preview.refresh",
+					"when": "resourceLangId == html",
+					"group": "navigation"
+				},
+				{
+					"command": "html.openBaseStyle",
+					"when": "resourceLangId == html",
+					"group": "navigation"
 				}
 			]
 		},
