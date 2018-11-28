@@ -11,9 +11,12 @@ import { isHTMLFile } from '../util/file';
 export class ShowInBrowserCommand implements Command {
     public readonly id = 'html.showInBrowser';
 
-    public execute() {
+    public execute(mainUri?: vscode.Uri) {
+        if (mainUri && mainUri.fsPath) {
+            return opn(mainUri.fsPath);
+        }
         if (vscode.window.activeTextEditor && isHTMLFile(vscode.window.activeTextEditor.document)) {
-            opn(vscode.window.activeTextEditor.document.fileName);
+            return opn(vscode.window.activeTextEditor.document.fileName);
         }
     }
 }
