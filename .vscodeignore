@@ -12,3 +12,6 @@ tslint.json
 webpack.config.js
 .git/**
 .vscode-test/**
+preview-src/**
+.gitattributes
+package-lock.json
