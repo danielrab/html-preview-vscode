@@ -1,5 +1,14 @@
 # Changes
 
+## 0.2.5
+
+- Initial changes (George Oliveira)
+- Update version
+- Fixed content doubling in the preview
+- Added "basestyles.css" to define a default preview style
+- Added "Edit Preview Style" command to easily edit "basestyles.css"
+- Added "Show in Browser" command
+
 ## 0.2.4
 
 - Update version
