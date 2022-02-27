@@ -33,7 +33,7 @@ export class OpenDocumentLinkCommand implements Command {
 		const p = decodeURIComponent(args.path);
 		return this.tryOpen(p, args).catch(() => {
 			if (path.extname(p) === '') {
-				return this.tryOpen(p + '.md', args);
+				return this.tryOpen(p + '.html', args);
 			}
 			const resource = vscode.Uri.file(p);
 			return Promise.resolve(void 0)

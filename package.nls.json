@@ -12,5 +12,7 @@
 	"html.showPreviewSecuritySelector.title": "Change Preview Security Settings",
 	"html.trace.desc": "Enable debug logging for the html extension.",
 	"html.preview.refresh.title": "Refresh Preview",
-	"html.preview.toggleLock.title": "Toggle Preview Locking"
+	"html.preview.toggleLock.title": "Toggle Preview Locking",
+	"html.openBaseStyle.title": "Edit Preview Style",
+	"html.showInBrowser.title": "Show in Browser"
 }
