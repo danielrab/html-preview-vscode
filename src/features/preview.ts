@@ -15,6 +15,7 @@ import { getVisibleLine, HTMLFileTopmostLineMonitor } from '../util/topmostLineM
 import { HTMLPreviewConfigurationManager } from './previewConfig';
 import { isHTMLFile } from '../util/file';
 import { getExtensionPath } from '../extension';
+import { transformHtml } from './htmlTransformer';
 const localize = nls.loadMessageBundle();
 
 export class HTMLPreview {
@@ -195,6 +196,7 @@ export class HTMLPreview {
 		disposeAll(this.disposables);
 	}
 
+	// handle all html updates
 	public update(resource: vscode.Uri) {
 		const editor = vscode.window.activeTextEditor;
 		if (editor && editor.document.uri.fsPath === resource.fsPath) {

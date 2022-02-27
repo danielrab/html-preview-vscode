@@ -44,7 +44,8 @@ export class HTMLPreviewManager implements vscode.WebviewPanelSerializer {
 			preview.updateConfiguration();
 		}
 	}
-
+  
+	// function called when you initially open preview
 	public preview(
 		resource: vscode.Uri,
 		previewSettings: PreviewSettings

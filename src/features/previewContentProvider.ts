@@ -13,6 +13,7 @@ import { Logger } from '../logger';
 import { ContentSecurityPolicyArbiter, HTMLPreviewSecurityLevel } from '../security';
 import { HTMLPreviewConfigurationManager, HTMLPreviewConfiguration } from './previewConfig';
 import * as cheerio from "cheerio";
+import { transformHtml } from './htmlTransformer';
 
 /**
  * Strings used inside the html preview.
@@ -67,7 +68,7 @@ export class HTMLContentProvider {
 		const nonce = new Date().getTime() + '' + new Date().getMilliseconds();
 		const csp = this.getCspForResource(sourceUri, nonce);
 
-        const parsedDoc = htmlDocument.getText().split(/\r?\n/).map((l,i) => 
+        const parsedDoc = transformHtml(htmlDocument.getText()).split(/\r?\n/).map((l,i) => 
 			l.replace(this.TAG_RegEx, (
 				match: string, p1: string, p2: string, p3: string, 
 				p4: string, p5: string, p6: string, offset: number) => 
